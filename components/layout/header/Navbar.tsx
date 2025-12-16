@@ -2,7 +2,6 @@ import Link from "next/link"
 import MobileNav from "./MobileNav"
 import {
   SignInButton,
-  SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
@@ -18,8 +17,8 @@ export const navLinks = [
     href:'/articles'
   },
   {
-    name:'Contact',
-    href:'/contact'
+    name:'Categories',
+    href:'/categories'
   },
 ] 
 const Navbar = () => {
