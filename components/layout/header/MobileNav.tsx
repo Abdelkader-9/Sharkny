@@ -2,6 +2,8 @@
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Link from "next/link"
@@ -20,7 +22,7 @@ const MobileNav = () => {
       <MenuIcon className="font-bold bg-none"/>
     </Button>
   </SheetTrigger>
-  <SheetContent>
+  <SheetContent aria-describedby={undefined}>
     <div className="flex flex-col space-y-4 mt-8 p-8">
       {navLinks.map((link)=>(
         <Link

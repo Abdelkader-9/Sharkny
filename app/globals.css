@@ -48,7 +48,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: 	#00181a;
+  --background: 	oklch(0.145 0 0);
   --foreground: #d4f0fc;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -170,7 +170,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(12px);
-      background: #06b6d4;
+      background: #023135;
     }
 
     .nav-container {
@@ -226,7 +226,7 @@
     }
 
     .nav-link {
-      color: #9ccfd3;
+      color: #ffffff;
       text-decoration: none;
       transition: color 0.3s;
     }
