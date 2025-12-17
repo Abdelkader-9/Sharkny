@@ -61,7 +61,7 @@ export const getArticle = async (id: string) => {
     return data[0];
 }
 
-export const getUserSessions = async (userId: string, limit = 10) => {
+export const getUserArticlesHistory = async (userId: string, limit = 10) => {
     const supabase = createSupabaseClient();
     const { data, error } = await supabase
         .from('article_history')

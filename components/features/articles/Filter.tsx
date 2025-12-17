@@ -15,7 +15,7 @@ const Filter = () => {
     <div>
         <Select>
   <SelectTrigger className="w-[180px]">
-    <SelectValue placeholder="Theme" />
+    <SelectValue placeholder="Filter by topic" />
   </SelectTrigger>
   <SelectContent>
     {topics.map((topic) => (

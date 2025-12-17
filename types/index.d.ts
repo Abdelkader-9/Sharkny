@@ -5,6 +5,11 @@ enum Topic {
   DevOpsCloud = "DevOps & Cloud",
   ComputerScience = "Computer Science",
   LearningCareer = "Learning & Career",
+  AIMachineLearning = "AI & Machine Learning",
+  MobileDevelopment = "Mobile Development",
+  GameDevelopment = "Game Development",
+  Cybersecurity = "Cybersecurity",
+  DataScience = "Data Science",
 }
 
 type Articles = Models.DocumentList<Models.Document> & {
@@ -13,7 +18,6 @@ type Articles = Models.DocumentList<Models.Document> & {
   subject: Subject;
   topic: string;
   duration: number;
-  bookmarked: boolean;
 };
 
 interface CreateArticle {
@@ -27,4 +31,13 @@ interface GetAllArticles {
   limit?: number;
   page?: number;
   topic?: string | string[];
+}
+
+interface ArticleDetailsProps {
+  companionId: string;
+  subject: string;
+  topic: string;
+  name: string;
+  userName: string;
+  userImage: string;
 }
