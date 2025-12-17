@@ -20,6 +20,10 @@ export const navLinks = [
     name:'Categories',
     href:'/categories'
   },
+  {
+    name:'my Journey',
+    href:'/my-journey'
+  },
 ] 
 const Navbar = () => {
   return (

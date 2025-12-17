@@ -5,6 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { topics } from "@/constans"
 const Filter = () => {
   return (
     <div className="flex items-center gap-2">
@@ -17,9 +18,11 @@ const Filter = () => {
     <SelectValue placeholder="Theme" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="light">Light</SelectItem>
-    <SelectItem value="dark">Dark</SelectItem>
-    <SelectItem value="system">System</SelectItem>
+    {topics.map((topic) => (
+      <SelectItem key={topic} value={topic}>
+        {topic}
+    </SelectItem>
+    ))}
   </SelectContent>
 </Select>
     </div>
