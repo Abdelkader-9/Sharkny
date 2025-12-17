@@ -1,5 +1,9 @@
 import NewArticleForm from '@/components/features/my-journey/NewArticleForm'
-const NewArticle = () => {
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
+const NewArticle = async () => {
+    const {userId} = await auth();
+  if (!userId) redirect("/sign-in");
   return (
     <section className='section-gap container'>
         <div>

@@ -1,9 +1,11 @@
 import Filter from "@/components/features/articles/Filter"
 import PostCard from "@/components/features/articles/PostCard"
 import SearchInput from "@/components/features/articles/SearchInput"
+import { getAllArticles } from "@/lib/actions/blog.actions";
 
 
-const Articles = () => {
+const Articles = async () => {
+    const articles = await getAllArticles({limit:3});
   return (
     <main className='container'>
       <section className='section-gap'>
@@ -20,21 +22,11 @@ const Articles = () => {
       </section>
       <section>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          <PostCard 
-          id={"1"} 
-          title={"Js"} 
-          subtitle={"Arrays in js"} 
-          description={"why array in js is deffrent langauge"}/>
-          <PostCard 
-          id={"2"} 
-          title={"Js"} 
-          subtitle={"Loops in js"} 
-          description={"why loops in js is deffrent langauge"}/>
-          <PostCard 
-          id={"3"} 
-          title={"Js"} 
-          subtitle={"Functions in js"} 
-          description={"why functions in js is deffrent langauge"}/>
+          {articles.map((article) => (
+            <PostCard 
+            key={article.id}
+            {...article}/>
+          ))}
         </div>
       </section>
     </main>

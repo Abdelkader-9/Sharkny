@@ -1,3 +1,5 @@
+
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
 interface postCradProps {
@@ -5,12 +7,21 @@ interface postCradProps {
   title: string;
   subtitle: string;
   description: string;
+  topic: string;
 }
-const PostCard = ({id , title , subtitle, description} : postCradProps) => {
+const PostCard = ({id , title , subtitle, description,topic} : postCradProps) => {
   return (
     <div className="post-card-inner">
       <div>
-        <h2 className='post-title'>{title}</h2>
+      <div>
+        <Badge 
+        variant={"secondary"}
+        className="mb-2"
+        >
+        {topic}
+        </Badge>
+      </div>
+        <h2 className='post-title pt-0.5'>{title}</h2>
         <h3 className='text-lg font-semibold pb-0.5'>{subtitle}</h3>
         <p className='text-md'>{description}</p>
       </div>
