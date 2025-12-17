@@ -132,7 +132,7 @@ const NewArticleForm = () => {
           Reset
         </Button>
         <Button type="submit" variant='outline' form="new-article-form">
-          Submit
+          Creat Article
         </Button>
       </Field>
       </form>

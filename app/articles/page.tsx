@@ -5,7 +5,7 @@ import { getAllArticles } from "@/lib/actions/blog.actions";
 
 
 const Articles = async () => {
-    const articles = await getAllArticles({limit:3});
+    const articles = await getAllArticles({limit:9});
   return (
     <main className='container'>
       <section className='section-gap'>
