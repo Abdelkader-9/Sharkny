@@ -50,7 +50,7 @@ const Navbar = () => {
         </div>
                 <SignedOut>
                       <SignInButton >
-                        <button className="border shadow-md text-ceramic-white rounded-lg font-semibold text-sm sm:text-base h-10 sm:h-12 px-3 sm:px-5 cursor-pointer">
+                        <button className="border shadow-md text-ceramic-white rounded-lg font-semibold text-sm sm:text-base h-8 sm:h-10 px-2 sm:px-3 cursor-pointer">
                           Sign In
                         </button>
                       </SignInButton>

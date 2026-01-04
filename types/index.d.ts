@@ -11,6 +11,10 @@ enum Topic {
   Cybersecurity = "Cybersecurity",
   DataScience = "Data Science",
 }
+interface SearchParams {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
 
 type Articles = Models.DocumentList<Models.Document> & {
   $id: string;
@@ -31,6 +35,7 @@ interface GetAllArticles {
   limit?: number;
   page?: number;
   topic?: string | string[];
+  title?: string | string[];
 }
 
 interface ArticleDetailsProps {
