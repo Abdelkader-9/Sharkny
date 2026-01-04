@@ -42,7 +42,7 @@ const MyJourney = async() => {
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="border border-black rouded-lg p-3 gap-2 flex flex-col h-fit">
+          <div className="border border-gray-300 rounded-lg p-3 gap-2 flex flex-col h-fit">
             <div className="flex gap-2 items-center">
               <CircleCheckBig className="text-green-500 h-6 w-6" />
               <p className="text-2xl font-bold">{articles.length}</p>

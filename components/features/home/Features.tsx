@@ -37,7 +37,7 @@ const Features = () => {
                         </div>
                         <div className='featured-text'>
                             <h4 className='font-semibold text-lg pb-2'>{feature.title}</h4>
-                            <p>{feature.description}</p>
+                            <p className='text-muted-foreground'>{feature.description}</p>
                         </div>
                     </div>
                 ))}
