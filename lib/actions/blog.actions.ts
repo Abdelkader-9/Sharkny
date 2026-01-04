@@ -1,6 +1,8 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { createSupabaseClient } from "../supabase";
+import { ar } from "zod/v4/locales";
+import { title } from "process";
 
 export const createArticle = async (formData:CreateArticle) => {
     const { userId: author } = await auth();
@@ -19,34 +21,33 @@ export const getAllArticles = async ({
   limit = 10,
   page = 1,
   topic,
+  title,
 }: GetAllArticles) => {
-  const supabase = createSupabaseClient();
+  const supabase = createSupabaseClient()
 
-  let query = supabase
-    .from('articles')
-    .select('*');
+  let query = supabase.from('articles').select()
 
-  // filtering
-  if (topic) {
-    query = query.or(
-      `topic.ilike.%${topic}%,name.ilike.%${topic}%,subject.ilike.%${topic}%`
-    );
-  }
+ if (topic && title) { 
+    query = query
+        .eq('topic', topic)
+        .ilike('title', `%${title}%`)
+} 
+else if (topic) { 
+    query = query.eq('topic', topic)
+} 
+else if (title) { 
+    query = query.ilike('title', `%${title}%`)
+}
 
-  // pagination
-  const from = (page - 1) * limit;
-  const to = from + limit - 1;
 
-  query = query.range(from, to);
+    query = query.range((page - 1) * limit, page * limit - 1);
 
-  const { data: articles, error } = await query;
+    const { data: articles, error } = await query;
 
-  if (error) {
-    throw new Error(error.message);
-  }
+    if(error) throw new Error(error.message);
 
-  return articles;
-};
+  return articles || [];
+}
 
 export const getArticle = async (id: string) => {
     const supabase = createSupabaseClient();

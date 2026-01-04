@@ -15,32 +15,55 @@ const ArticleDetails = async ({params}:ArticleDetailsProps) => {
   if(!user) redirect('/sign-in');
   if(!title) redirect('/articles');
   return (
-    <section>
-        <article>
-        <div className='container section-gap'>
-                <div className='mb-6'>
-                    <div className='mb-5'>
-                <span className='text-md font-medium mb-2'>Topic: {topic}</span>
-                <span className='text-md font-medium ml-4 mb-2'>Author: {user.firstName}</span>
-                </div>
-                <h1 className='text-4xl font-bold mb-2'>{title}</h1>
-                <h2 className='text-2xl font-semibold mb-4'>{subtitle}</h2>
-            </div>
-            <div>
-                <p className='text-lg leading-8 line-clamp-3'>{description}</p>
-            </div>
-            <div className='flex items-center gap-2'>
-                <Image
-                src={user.imageUrl}
-                alt = {user.firstName || "User Image"}
-                width={35}
-                height={35}
-                className="rounded-full mt-4"
-                />
-                <h4 className='font-medium mt-2'>{user.firstName} {user.lastName}</h4>
-            </div>
+    <section className='section-gap'>
+          <article className="mx-auto max-w-3xl px-4">
+        
+        {/* Meta info */}
+        <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-gray-500">
+          <span className="rounded-full bg-gray-100 px-3 py-1 font-medium">
+            {topic}
+          </span>
+          <span>•</span>
+          <span>By {user.firstName}</span>
         </div>
-        </article>
+
+        {/* Title */}
+        <h1 className="text-4xl font-bold leading-tight mb-4">
+          {title}
+        </h1>
+
+        {/* Subtitle */}
+        {subtitle && (
+          <h2 className="text-xl  mb-8 leading-relaxed">
+            {subtitle}
+          </h2>
+        )}
+
+        {/* Content */}
+        <div className="prose prose-lg max-w-none  leading-relaxed">
+          <p>{description}</p>
+        </div>
+
+        {/* Author */}
+        <div className="mt-12 flex items-center pb-6 gap-4 border-t pt-6">
+          <Image
+            src={user.imageUrl}
+            alt={user.firstName || 'User Image'}
+            width={48}
+            height={48}
+            className="rounded-full"
+          />
+          <div>
+            <p className="font-medium">
+              {user.firstName} {user.lastName}
+            </p>
+            <p className="text-sm text-gray-500">
+              Article Author
+            </p>
+          </div>
+        </div>
+
+      </article>
     </section>
   )
 }

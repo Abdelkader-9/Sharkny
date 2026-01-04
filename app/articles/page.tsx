@@ -3,9 +3,11 @@ import PostCard from "@/components/features/articles/PostCard"
 import SearchInput from "@/components/features/articles/SearchInput"
 import { getAllArticles } from "@/lib/actions/blog.actions";
 
-
-const Articles = async () => {
-    const articles = await getAllArticles({limit:9});
+const Articles = async ({ searchParams } : SearchParams) => {
+     const filters = await searchParams;
+    const title = filters.title ? filters.title : '';
+    const topic = filters.topic ? filters.topic : '';
+    const articles = await getAllArticles({limit:9 , title, topic});
   return (
     <main className='container'>
       <section className='section-gap'>
