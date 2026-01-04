@@ -21,12 +21,10 @@ const Filter = () => {
 
   const [searchQuery, setSearchQuery] = useState(query)
 
-  // sync URL → Select
   useEffect(() => {
     setSearchQuery(query)
   }, [query])
 
-  // filter
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (searchQuery) {

@@ -20,7 +20,7 @@ const ArticleDetails = async ({params}:ArticleDetailsProps) => {
         
         {/* Meta info */}
         <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-gray-500">
-          <span className="rounded-full bg-gray-100 px-3 py-1 font-medium">
+          <span className="rounded-full bg-gray-500  text-white px-3 py-1 font-medium">
             {topic}
           </span>
           <span>•</span>

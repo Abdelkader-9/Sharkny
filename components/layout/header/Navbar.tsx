@@ -6,6 +6,7 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import ThemeToggle from "../ThemeToggle"
 
 export const navLinks = [
   {
@@ -15,10 +16,6 @@ export const navLinks = [
   {
     name:'Articles',
     href:'/articles'
-  },
-  {
-    name:'Categories',
-    href:'/categories'
   },
   {
     name:'my Journey',
@@ -48,6 +45,8 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
+        <div className="flex items-center gap-4">
+            <ThemeToggle/>
                 <SignedOut>
                       <SignInButton >
                         <button className="border shadow-md text-ceramic-white rounded-lg font-semibold text-sm sm:text-base h-8 sm:h-10 px-2 sm:px-3 cursor-pointer">
@@ -59,6 +58,7 @@ const Navbar = () => {
                       <UserButton />
                     </SignedIn>
         <MobileNav/>
+        </div>
       </div>
     </nav>
   )

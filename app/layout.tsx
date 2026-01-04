@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Roboto, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/header/Navbar";
 import Footer from "@/components/layout/footer/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
-const robotoSans = Roboto({
-  variable: "--font-roboto-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair_Display = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: "Sharkeny",
   description: "Sharkny tech blog to share knowledge ",
@@ -28,14 +28,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${robotoSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${playfair_Display.variable} antialiased`}
       >
         <ClerkProvider>
+             <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
           <Navbar/>
         {children}
-        <Footer/>
+        <Footer/> 
+          </ThemeProvider>
         </ClerkProvider>
-       
       </body>
     </html>
   );
