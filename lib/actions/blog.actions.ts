@@ -25,7 +25,7 @@ export const getAllArticles = async ({
 }: GetAllArticles) => {
   const supabase = createSupabaseClient()
 
-  let query = supabase.from('articles').select()
+  let query = supabase.from('articles').select('*', { count: 'exact' })
 
  if (topic && title) { 
     query = query
@@ -42,11 +42,15 @@ else if (title) {
 
     query = query.range((page - 1) * limit, page * limit - 1);
 
-    const { data: articles, error } = await query;
+     const { data: articles, error, count } = await query;
 
     if(error) throw new Error(error.message);
 
-  return articles || [];
+   return {
+    articles: articles || [],
+    totalCount: count || 0,
+    hasNextPage: count ? count > page * limit : false
+  };
 }
 
 export const getArticle = async (id: string) => {
