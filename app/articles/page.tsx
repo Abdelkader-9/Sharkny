@@ -1,3 +1,4 @@
+import ArticlesPagination from "@/components/features/articles/ArticlesPagination";
 import Filter from "@/components/features/articles/Filter"
 import PostCard from "@/components/features/articles/PostCard"
 import SearchInput from "@/components/features/articles/SearchInput"
@@ -7,7 +8,8 @@ const Articles = async ({ searchParams } : SearchParams) => {
      const filters = await searchParams;
     const title = filters.title ? filters.title : '';
     const topic = filters.topic ? filters.topic : '';
-    const articles = await getAllArticles({limit:9 , title, topic});
+    const page = Number(filters.page) || 1;
+    const {articles,hasNextPage} = await getAllArticles({limit:9 ,page, title, topic});
   return (
     <main className='container'>
       <section className='section-gap'>
@@ -30,6 +32,7 @@ const Articles = async ({ searchParams } : SearchParams) => {
             {...article}/>
           ))}
         </div>
+         <ArticlesPagination page={page} hasNextPage={hasNextPage} />
       </section>
     </main>
   )
