@@ -14,7 +14,7 @@ const Hero = () => {
             </Link>
         </div>
         </div>
-        <div className="relative">
+        <div className="relative hidden lg:flex justify-center items-center">
                         <div className= "w-80 h-80 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl absolute -top-10 -right-10"></div>
                         <div className="w-96 h-96 bg-gradient-to-tl from-secondary/30 to-primary/30 rounded-2xl transform rotate-6 shadow-2xl"></div>
         </div>

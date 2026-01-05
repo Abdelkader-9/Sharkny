@@ -30,11 +30,11 @@ import {
   FieldError,
   FieldDescription,
 } from "@/components/ui/field"
-import { Select, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { SelectContent } from "@radix-ui/react-select";
+import { Select, SelectItem, SelectTrigger, SelectValue,SelectContent } from "@/components/ui/select";
 import { topics } from "@/constans";
 import { redirect } from "next/navigation";
 import { createArticle } from "@/lib/actions/blog.actions";
+
 
 
 const NewArticleForm = () => {
@@ -50,14 +50,7 @@ const NewArticleForm = () => {
 
    const onSubmit = async(values: z.infer<typeof formSchema>) => {
             const article = await createArticle(values);
-
-        if(article) {
-            redirect(`/articles/${article.id}`);
-        } else {
-            console.log('Failed to create an article');
-            redirect('/');
-        }
-  }
+          }
 
   return (
     <section className="section-gap conatiner">
@@ -66,7 +59,8 @@ const NewArticleForm = () => {
           {/* Topic */}
           <Field data-invalid={!!form.formState.errors.topic}>
             <FieldLabel htmlFor="topic">Topic</FieldLabel>
-            <Select onValueChange={(value) => form.setValue("topic", value)}>
+            <Select value={form.watch("topic")}
+  onValueChange={(value) => form.setValue("topic", value)}>
               <SelectTrigger id="topic" className="w-[180px]">
                 <SelectValue placeholder="Select a topic" />
                 </SelectTrigger>
@@ -75,7 +69,7 @@ const NewArticleForm = () => {
                   <SelectItem 
                   value={topic} 
                   key={topic}
-                  className=" text-white"
+                  className=" capitalize"
                   >
                     {topic}
                   </SelectItem>

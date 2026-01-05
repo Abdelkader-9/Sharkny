@@ -11,3 +11,17 @@ export const topics = [
   "Cybersecurity",
   "Data Science",
 ];
+export const navLinks = [
+  {
+    name:'Home',
+    href:'/'
+  },
+  {
+    name:'Articles',
+    href:'/articles'
+  },
+  {
+    name:'my Journey',
+    href:'/my-journey'
+  },
+] 
