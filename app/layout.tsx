@@ -35,12 +35,11 @@ export default function RootLayout({
             attribute="class"
             defaultTheme="system"
             enableSystem
-            disableTransitionOnChange
           >
           <Navbar/>
         {children}
         <Footer/> 
-          </ThemeProvider>
+      </ThemeProvider>
         </ClerkProvider>
       </body>
     </html>

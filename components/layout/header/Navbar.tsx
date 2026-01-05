@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import MobileNav from "./MobileNav"
 import {
@@ -7,22 +8,15 @@ import {
   UserButton,
 } from '@clerk/nextjs'
 import ThemeToggle from "../ThemeToggle"
+import { useEffect, useState } from "react";
+import { navLinks } from "@/constans"
 
-export const navLinks = [
-  {
-    name:'Home',
-    href:'/'
-  },
-  {
-    name:'Articles',
-    href:'/articles'
-  },
-  {
-    name:'my Journey',
-    href:'/my-journey'
-  },
-] 
+
 const Navbar = () => {
+    const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   return (
     <nav className='nav shadow-md border-none'>
       <div className='nav-container'>

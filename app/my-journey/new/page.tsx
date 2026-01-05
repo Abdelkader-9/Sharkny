@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 const NewArticle = async () => {
     const {userId} = await auth();
   if (!userId) redirect("/sign-in");
+
   return (
     <section className='section-gap container'>
         <div>
