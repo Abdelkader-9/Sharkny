@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/header/Navbar";
 import Footer from "@/components/layout/footer/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import Providers from "@/components/Providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,17 +31,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair_Display.variable} antialiased`}
       >
-        <ClerkProvider>
-             <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-          >
-          <Navbar/>
+        <Providers>
+        <Navbar/>
         {children}
         <Footer/> 
-      </ThemeProvider>
-        </ClerkProvider>
+        </Providers>
+  
       </body>
     </html>
   );
