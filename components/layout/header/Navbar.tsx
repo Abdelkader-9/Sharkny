@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import MobileNav from "./MobileNav"
 import {
@@ -6,26 +7,16 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import ThemeToggle from "../ThemeToggle"
+import { useEffect, useState } from "react";
+import { navLinks } from "@/constans"
 
-export const navLinks = [
-  {
-    name:'Home',
-    href:'/'
-  },
-  {
-    name:'Articles',
-    href:'/articles'
-  },
-  {
-    name:'Categories',
-    href:'/categories'
-  },
-  {
-    name:'my Journey',
-    href:'/my-journey'
-  },
-] 
+
 const Navbar = () => {
+    const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   return (
     <nav className='nav shadow-md border-none'>
       <div className='nav-container'>
@@ -48,9 +39,11 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
+        <div className="flex items-center gap-4">
+            <ThemeToggle/>
                 <SignedOut>
                       <SignInButton >
-                        <button className="border shadow-md text-ceramic-white rounded-lg font-semibold text-sm sm:text-base h-10 sm:h-12 px-3 sm:px-5 cursor-pointer">
+                        <button className="border shadow-md text-ceramic-white rounded-lg font-semibold text-sm sm:text-base h-8 sm:h-10 px-2 sm:px-3 cursor-pointer">
                           Sign In
                         </button>
                       </SignInButton>
@@ -59,6 +52,7 @@ const Navbar = () => {
                       <UserButton />
                     </SignedIn>
         <MobileNav/>
+        </div>
       </div>
     </nav>
   )
