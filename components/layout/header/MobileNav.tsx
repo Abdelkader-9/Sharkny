@@ -16,7 +16,7 @@ const MobileNav = () => {
     <div className="md:hidden flex items-center space-x-4">
         <Sheet open={open} onOpenChange={setIsOpen}>
   <SheetTrigger>
-     <MenuIcon className="font-bold bg-none"/>
+     <MenuIcon aria-labelledby="menu" className="font-bold bg-none"/>
   </SheetTrigger>
   <SheetTitle className="hidden">Menu</SheetTitle>
   <SheetContent aria-describedby={undefined}>
